@@ -1,0 +1,44 @@
+function includeHeader() {
+    document.addEventListener("DOMContentLoaded", function() {
+        var links = document.querySelectorAll('.nav ul li a');
+    
+        links.forEach(function(link) {
+            link.addEventListener('click', function() {
+                links.forEach(function(link) {
+                    link.classList.remove('selected');
+                });
+                this.classList.add('selected');
+            });
+        });
+    });
+    
+    // Create a new XMLHttpRequest object
+    var xhr = new XMLHttpRequest();
+
+    // Define the path to the header HTML file
+    var headerPath = '../views/header.html';
+
+    // Open a GET request to fetch the header HTML
+    xhr.open('GET', headerPath, true);
+
+    // Set the responseType to 'text'
+    xhr.responseType = 'text';
+
+    // Define what to do when the request is completed
+    xhr.onload = function() {
+        // Check if the request was successful
+        if (xhr.status === 200) {
+            // Insert the header HTML into the page
+            document.getElementById('header-container').innerHTML = xhr.responseText;
+        } else {
+            // Log an error message if the request failed
+            console.error('Failed to load header:', xhr.statusText);
+        }
+    };
+
+    // Send the request
+    xhr.send();
+}
+
+// Call the includeHeader function when the window is loaded
+window.onload = includeHeader;

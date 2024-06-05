@@ -1,0 +1,76 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    align-items: center;
+}
+
+.header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo img {
+    max-width: 100px;
+    max-height: 50px;
+}
+
+.nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.nav ul li {
+    display: inline;
+    margin-left: 20px;
+}
+
+.nav ul li:first-child {
+    margin-left: 0;
+}
+
+.nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.nav ul li a:hover,
+.nav ul li a:active {
+    color: #007bff; /* Set the color for the text when hovered or active */
+}
+
+.content {
+    padding: 20px;
+    text-align: center;
+    font-size: 24px;
+}
+
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.button:hover {
+    background-color: #0056b3;
+}
+
+.logo-container img {
+    max-width: 500px; /* Adjust the max-width to your desired size */
+    max-height: 500px; /* Adjust the max-height to your desired size */
+}
+
+.logo-container {
+    text-align: center;
+    margin-top: 10px; /* Add space between the buttons and the logo */
+}

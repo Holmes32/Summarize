@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Summarizer</title>
+    <link rel="stylesheet" href="../styles/styles.css">
+    <link rel="stylesheet" href="../styles/summarize.css">
+</head>
+
+<body>
+    <div id="header-container"></div>
+
+    <div class="container">
+        <h1>Text Summarizer</h1>
+        <textarea id="inputText" placeholder="Enter your text here..."></textarea>
+
+        <label for="algorithm">Choose an algorithm:</label>
+        <select id="algorithm" name="algorithm">
+            <option value="clustering">Clustering</option>
+            <option value="lsa">LSA</option>
+            <option value="textrank">TextRank</option>
+        </select>
+
+        <label for="language">Choose a language:</label>
+        <select id="language" name="language">
+            <option value="english">English</option>
+            <option value="vietnamese">Vietnamese</option>
+        </select>
+        <div class="input-container">
+            <label for="compression">Compression Percentage:</label>
+            <select id="compression" name="compression">
+                <option value="10">10%</option>
+                <option value="20">20%</option>
+                <option value="30">30%</option>
+                <option value="40">40%</option>
+                <option value="50">50%</option>
+                <option value="60">60%</option>
+                <option value="70">70%</option>
+                <option value="80">80%</option>
+                <option value="90">90%</option>
+                <option value="100">100%</option>
+            </select>
+        </div>
+        <div class="input-container">
+            <label for="maxWords">Max Words:</label>
+            <input type="number" id="maxWords" name="maxWords">
+        </div>
+        <div id="button">
+            <button onclick="summarize()">Summarize</button>
+        </div>
+        <div id="summary"></div>
+
+        <script src="../scripts/includeHeader.js"></script>
+        <script src="../scripts/summarize.js"></script>
+    </div>
+    </script>
+</body>
+
+</html>
