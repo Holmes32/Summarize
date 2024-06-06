@@ -1,3 +1,0 @@
-in this code:. . we use spawn to spawn a new shell session.. we use bash -c to run a sequence of commands in the shell. the ${envscript} && ${pythonscript} concatenates the activation of the virtual environment and the execution of the python script ensuring they run sequentially in the same shell session.. we handle the standard output (stdout) and standard error (stderr) streams to capture any output or errors produced by the commands.. we handle the close event to log the exit code of the shell session.. this approach should ensure that both commands run in the same environment potentially resolving issues related to missing libraries,e close event to log the exit code of the shell session.;
-zxcmnx<c,Cxxzc;
-adfa,adsf,asdfs;

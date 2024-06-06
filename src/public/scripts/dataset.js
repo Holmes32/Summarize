@@ -13,8 +13,15 @@ document.addEventListener("DOMContentLoaded", () => {
     // Function to fetch dataset from server (for now using example data)
     async function fetchDataset() {
         // Simulate fetching data from the server with example data
-        const data = exampleData;
-        renderDataset(data);
+        // const data = exampleData;
+        // renderDataset(data);
+        try {
+            const response = await fetch('/training/getDataset');
+            const data = await response.json();
+            renderDataset(data);
+        } catch (error) {
+            console.error('Error fetching dataset:', error);
+        }
     }
 
     // Function to render dataset
@@ -33,7 +40,7 @@ document.addEventListener("DOMContentLoaded", () => {
             });
 
             const rawText = document.createElement('span');
-            rawText.textContent = item.rawText;
+            rawText.textContent = item.text;
 
             datasetItemHeader.appendChild(rawText);
             datasetItem.appendChild(datasetItemHeader);
@@ -42,15 +49,27 @@ document.addEventListener("DOMContentLoaded", () => {
             datasetItemSummary.classList.add('dataset-item-summary');
             datasetItemSummary.style.display = 'none';
 
-            item.summarizedTexts.forEach(summary => {
+            item.summary.forEach(it => {
                 const summarizedText = document.createElement('p');
-                summarizedText.textContent = summary;
+                summarizedText.textContent = it;
                 datasetItemSummary.appendChild(summarizedText);
             });
+
+            const editButton = document.createElement('button');
+            editButton.className = 'edit-button';
+            editButton.innerText = 'Edit';
+            editButton.onclick = function() {
+                editSummarizeText();
+            };
+            datasetItemSummary.appendChild(editButton);
 
             datasetItem.appendChild(datasetItemSummary);
             datasetList.appendChild(datasetItem);
         });
+    }
+
+    function editSummarizeText() {
+
     }
 
     // Initial fetch of the dataset

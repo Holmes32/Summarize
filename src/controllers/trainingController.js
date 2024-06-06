@@ -49,26 +49,52 @@ class TrainingController{
     
             try {
                 // Parse the existing JSON data
-                let jsonData = data ? JSON.parse(data) : { essay: '', listessay: '' };
+            let dataArray = data ? JSON.parse(data) : [];
 
-                // Update the JSON data with the new essay and list of essays
-                jsonData.text = text;
-                jsonData.summary = summary;
+            // Add the new essay and list of essays to the array
+            dataArray.push({
+                text: text,
+                summary: summary
+            });
+
+            // Convert the updated array back to a string
+            const updatedData = JSON.stringify(dataArray, null, 2);
     
-                // Convert the updated JSON data back to a string
-                const updatedData = JSON.stringify(jsonData, null, 2);
-    
-                // Write the updated data back to the JSON file
-                fs.writeFile(filename, updatedData, 'utf8', (err) => {
-                    if (err) {
-                        console.error('Error writing to JSON file:', err);
-                        return;
-                    }
-    
-                    console.log('Essays saved successfully!');
-                });
+            // Write the updated data back to the JSON file
+            fs.writeFile(filename, updatedData, 'utf8', (err) => {
+                if (err) {
+                    console.error('Error writing to JSON file:', err);
+                    return;
+                }
+
+                console.log('Essays saved successfully!');
+            });
             } catch (parseError) {
                 console.error('Error parsing JSON data:', parseError);
+            }
+        });
+    }
+    async getDataset(req, res, next) {
+        var filename = 'en_dataset.json'
+        // if (language === 'vietnamese') {
+        //     filename = 'vi_dataset.json'
+        // }
+        fs.readFile(filename, 'utf8', (err, data) => {
+            if (err) {
+                console.error('Error reading JSON file:', err);
+                return res.status(500).json({ error: 'Internal Server Error' });
+            }
+    
+            try {
+                // Parse the JSON data
+                const jsonData = JSON.parse(data);
+    
+                // Output the data to the console
+                console.log('data:', jsonData);
+                res.status(200).json(jsonData);
+            } catch (parseError) {
+                console.error('Error parsing JSON data:', parseError);
+                return res.status(500).json({ error: 'Internal Server Error' });
             }
         });
     } 
