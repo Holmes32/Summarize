@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
         // const data = exampleData;
         // renderDataset(data);
         try {
-            const response = await fetch('/training/getDataset');
+            const response = await fetch('/dataset/getDataset');
             const data = await response.json();
             renderDataset(data);
         } catch (error) {

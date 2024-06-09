@@ -15,8 +15,7 @@
     <div id="header-container"></div>
 
     <div class="container">
-        <h2>Training Page</h2>
-        <a id="dataset-link" href="/dataset">Dataset</a>
+        <h2>Edit Page</h2>
         <div class="input-container1">
             <label for="textInput">Raw Text:</label>
             <textarea id="textInput" name="textInput"></textarea>
@@ -30,14 +29,9 @@
             </div>
         </div>
         <div class="button-container">
-            <label for="language">Choose a language:</label>
-            <select id="language" name="language">
-                <option value="english">English</option>
-                <option value="vietnamese">Vietnamese</option>
-            </select>
             <div id="button">
-                <button onclick="addToDataSet()">Add To DataSet</button>
-                <button onclick="trainModel()">Train Model</button>
+                <button onclick="save()">Save</button>
+                <button class="remove-button" onclick="deleteDataset()">Delete</button>
             </div>
         </div>
     </div>
