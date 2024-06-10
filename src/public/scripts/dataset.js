@@ -2,6 +2,10 @@
 document.addEventListener("DOMContentLoaded", () => {
     const datasetList = document.getElementById("dataset-list");
 
+    document.getElementById('Button').addEventListener('click', () => {
+        window.location.href = '/dataset/download';
+      }); 
+
     // Example dataset for demonstration
     const exampleData = [
         { rawText: "This is the first raw text eaple Certainly! Let's create some example data within the JavaScript file to demonstrate the functionality. We'll modify the fetchDataset function to use this example data instead of fetching it from the server.", summarizedTexts: ["First example summary 1.", "First example summary 2."] },
@@ -69,6 +73,10 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function editSummarizeText() {
+
+    }
+
+    function download() {
 
     }
 

@@ -6,10 +6,11 @@ class DatasetController {
         res.sendFile(path.join(__dirname + '/../public/views/dataset.html'));
     }
     async getDataset(req, res, next) {
+        const language = req.body.language;
         var filename = 'en_dataset.json'
-        // if (language === 'vietnamese') {
-        //     filename = 'vi_dataset.json'
-        // }
+        if (language === 'vietnamese') {
+            filename = 'vi_dataset.json'
+        }
         fs.readFile(filename, 'utf8', (err, data) => {
             if (err) {
                 console.error('Error reading JSON file:', err);
@@ -29,19 +30,15 @@ class DatasetController {
             }
         });
     }
-    // async getDataset(req, res, next) {
-    //     var filename = 'en_dataset.json'
-    //     // if (language === 'vietnamese') {
-    //     //     filename = 'vi_dataset.json'
-    //     // }
-    //     // Path at which image will get downloaded 
-    //     const filePath = `${__dirname}/files`;
-
-    //     download(filename, filePath)
-    //         .then(() => {
-    //             console.log('Download Completed');
-    //         })
-    // }
+    async downloadDataset(req, res, next) {
+        const language = req.body.language;
+        var filename = 'en_dataset.json'
+        if (language === 'vietnamese') {
+            filename = 'vi_dataset.json'
+        }
+        // Path at which image will get downloaded 
+        res.download(filename);
+    }
 }
 
 module.exports = new DatasetController;
