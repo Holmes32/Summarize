@@ -1,7 +1,7 @@
 // scripts/dataset.js
 document.addEventListener("DOMContentLoaded", () => {
     const datasetList = document.getElementById("dataset-list");
-
+    
     document.getElementById('Button').addEventListener('click', () => {
         window.location.href = '/dataset/download';
       }); 
@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
     function renderDataset(data) {
         datasetList.innerHTML = ''; // Clear any existing content
 
-        data.forEach(item => {
+        data.forEach((item, index) => {
             const datasetItem = document.createElement('div');
             datasetItem.classList.add('dataset-item');
 
@@ -63,7 +63,7 @@ document.addEventListener("DOMContentLoaded", () => {
             editButton.className = 'edit-button';
             editButton.innerText = 'Edit';
             editButton.onclick = function() {
-                editSummarizeText();
+                editSummarizeText(index, item.text, item.summary);
             };
             datasetItemSummary.appendChild(editButton);
 
@@ -72,12 +72,30 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    function editSummarizeText() {
-
-    }
-
-    function download() {
-
+    async function editSummarizeText(index) {
+        var selectedLanguage = document.getElementById("language").value;
+            // Send a POST request to the API endpoint to add the data set
+        const data = {
+            index: index,
+            language: selectedLanguage
+        };
+        await fetch('/dataset/edit', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+        .then(response => response.text()) // Convert the response to text
+        .then(html => {
+            document.open();
+            document.write(html); // Write the new HTML content
+            document.close();
+        })
+        .catch(error => {
+            // Handle errors
+            console.error('Error adding data set:', error);
+        });
     }
 
     // Initial fetch of the dataset

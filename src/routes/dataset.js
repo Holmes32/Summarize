@@ -4,5 +4,7 @@ const datasetController = require('../controllers/datasetController');
 router.get('/',datasetController.index);
 router.get('/getDataset',datasetController.getDataset);
 router.get('/download',datasetController.downloadDataset);
-// router.get('/editDataset',datasetController.editDataset);
+router.post('/edit',datasetController.postEditDataset);
+router.get('/edit',datasetController.getEditDataset);
+router.get('/getDataEdit',datasetController.getDataEdit);
 module.exports = router;

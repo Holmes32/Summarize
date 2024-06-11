@@ -9,6 +9,9 @@ var path = require('path');
 const app = express();
 const port = 3001;
 
+app.set('views', __dirname + '/public/views');
+app.engine('html', require('ejs').renderFile);
+app.set('view engine', 'html');
 // app.set('views', path.join(__dirname, 'public'));
 // app.set('view engine', 'jade');
 
