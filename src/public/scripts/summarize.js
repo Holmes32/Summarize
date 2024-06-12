@@ -31,6 +31,6 @@ function summarize() {
         document.getElementById("summary").innerText = data.message;
     })
     .catch(error => {
-        console.error('There was a problem with the POST request:', error);
+        alert('There was a problem with the POST request:', error);
     });
 }

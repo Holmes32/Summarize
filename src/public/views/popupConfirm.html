@@ -1,0 +1,12 @@
+<button id="btnChangeBg">Change Background</button>
+<script>
+  document.querySelector('#btnChangeBg').addEventListener('click', () => {
+    Confirm.open({
+      title: 'Background Change',
+      message: 'Are you sure you wish the background color?',
+      onok: () => {
+        document.body.style.backgroundColor = 'blue';
+      }
+    })
+  });
+</script>

@@ -85,18 +85,17 @@ function addToDataSet() {
         if (!response.ok) {
             throw new Error('Network response was not ok');
         }
-        return response.json();
+        alert('Data added successfully')
     })
-    .then(data => {
-        // Data added successfully, handle response if needed
-        console.log('Data added successfully:', data);
-    })
+    // .then(data => {
+    //     // Data added successfully, handle response if needed
+    // })
     .catch(error => {
         // Handle errors
-        console.error('Error adding data set:', error);
+        alert('Error adding data set:', error);
     });
 }
 
 function trainModel() {
-    alert("Train model functionality");
+    alert("Feature is comming soon");
 }

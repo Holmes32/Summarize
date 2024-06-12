@@ -7,4 +7,6 @@ router.get('/download',datasetController.downloadDataset);
 router.post('/edit',datasetController.postEditDataset);
 router.get('/edit',datasetController.getEditDataset);
 router.get('/getDataEdit',datasetController.getDataEdit);
+router.post('/save',datasetController.saveDataset);
+router.post('/delete',datasetController.deleteDataset);
 module.exports = router;

@@ -94,7 +94,7 @@ document.addEventListener("DOMContentLoaded", () => {
         })
         .catch(error => {
             // Handle errors
-            console.error('Error adding data set:', error);
+            alert('Error adding data set:', error);
         });
     }
 

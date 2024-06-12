@@ -56,7 +56,6 @@ class DatasetController {
                 console.error('Error writing to tempt file:', err);
                 return;
             }
-
             console.log('Data saved successfully!');
         });
 
@@ -93,6 +92,7 @@ class DatasetController {
                     const jsonDataset = JSON.parse(dataset);
                     const dataSend = jsonDataset[jsonData.index]
                     dataSend.index = jsonData.index
+                    dataSend.language = language
 
                     // Output the data to the console
                     console.log('data:', dataSend);
@@ -101,6 +101,94 @@ class DatasetController {
             } catch (parseError) {
                 console.error('Error parsing JSON data:', parseError);
                 return res.status(500).json({ error: 'Internal Server Error' });
+            }
+        });
+    }
+
+    async saveDataset(req, res, next) {
+        const index = req.body.index;
+        const language = req.body.language
+        const text = req.body.text
+        const summary = req.body.summary 
+
+        var filename = 'en_dataset.json'
+        if (language === 'vietnamese') {
+            filename = 'vi_dataset.json'
+        }
+
+        fs.readFile(filename, 'utf8', (err, data) => {
+            if (err) {
+                console.error('Error reading JSON file:', err);
+                return;
+            }
+
+            try {
+                // Parse the existing JSON data
+                let dataArray = data ? JSON.parse(data) : [];
+
+                // Add the new essay and list of essays to the array
+                const addData = {
+                    text: text,
+                    summary: summary
+                }
+                dataArray[index] = addData
+
+                // Convert the updated array back to a string
+                const updatedData = JSON.stringify(dataArray, null, 2);
+
+                // Write the updated data back to the JSON file
+                fs.writeFile(filename, updatedData, 'utf8', (err) => {
+                    if (err) {
+                        console.error('Error writing to JSON file:', err);
+                        return;
+                    }
+
+                    console.log('Essays saved successfully!');
+                    res.status(200).json({ message: "success" });
+                });
+            } catch (parseError) {
+                console.error('Error parsing JSON data:', parseError);
+            }
+        });
+    }
+
+    async deleteDataset(req, res, next) {
+        const index = req.body.index;
+        const language = req.body.language
+
+        var filename = 'en_dataset.json'
+        if (language === 'vietnamese') {
+            filename = 'vi_dataset.json'
+        }
+
+        fs.readFile(filename, 'utf8', (err, data) => {
+            if (err) {
+                console.error('Error reading JSON file:', err);
+                return;
+            }
+
+            try {
+                // Parse the existing JSON data
+                let dataArray = data ? JSON.parse(data) : [];
+
+                // Add the new essay and list of essays to the array
+                dataArray.splice(index, 1)
+
+                // Convert the updated array back to a string
+                const updatedData = JSON.stringify(dataArray, null, 2);
+
+                // Write the updated data back to the JSON file
+                fs.writeFile(filename, updatedData, 'utf8', (err) => {
+                    if (err) {
+                        console.error('Error writing to JSON file:', err);
+                        return;
+                    }
+
+                    console.log('Essays deleted successfully!');
+                    res.status(200).json({ message: "success" });
+                });
+            } catch (parseError) {
+                console.error('Error parsing JSON data:', parseError);
             }
         });
     }

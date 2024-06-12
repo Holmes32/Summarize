@@ -40,6 +40,7 @@ class TrainingController {
                     }
 
                     console.log('Essays saved successfully!');
+                    res.status(200).json({ message: "success" });
                 });
             } catch (parseError) {
                 console.error('Error parsing JSON data:', parseError);
