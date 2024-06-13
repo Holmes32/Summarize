@@ -7,7 +7,7 @@ const router = require('./routes');
 var path = require('path');
 
 const app = express();
-const port = 3001;
+// const port = 3001;
 
 app.set('views', __dirname + '/public/views');
 app.engine('html', require('ejs').renderFile);
@@ -27,7 +27,7 @@ app.use(function (req, res, next) {
 router(app)
 
 // Start the server
-app.listen(port, () => {
-    console.log(`Server is running on http://localhost:${port}`);
-});
+// app.listen(port, () => {
+//     console.log(`Server is running on http://localhost:${port}`);
+// });
 module.exports = app;

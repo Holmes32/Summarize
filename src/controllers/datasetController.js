@@ -19,7 +19,7 @@ class DatasetController {
 
             try {
                 // Parse the JSON data
-                const jsonData = JSON.parse(data);
+                const jsonData = data ? JSON.parse(data) : [];
 
                 // Output the data to the console
                 console.log('data:', jsonData);

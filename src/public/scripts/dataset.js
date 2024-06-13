@@ -4,7 +4,12 @@ document.addEventListener("DOMContentLoaded", () => {
     
     document.getElementById('Button').addEventListener('click', () => {
         window.location.href = '/dataset/download';
-      }); 
+    });
+
+    const selectedLanguage = document.getElementById('language');
+    selectedLanguage.addEventListener('change', function() {
+        fetchDataset();
+    });
 
     // Example dataset for demonstration
     const exampleData = [
@@ -20,7 +25,17 @@ document.addEventListener("DOMContentLoaded", () => {
         // const data = exampleData;
         // renderDataset(data);
         try {
-            const response = await fetch('/dataset/getDataset');
+            const language = document.getElementById('language').value;
+            const dataSend = {
+                language: language
+            };
+            const response = await fetch('/dataset/getDataset', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(dataSend)
+            });
             const data = await response.json();
             renderDataset(data);
         } catch (error) {

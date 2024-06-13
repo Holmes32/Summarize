@@ -123,22 +123,29 @@ async function save(index, language, rawText, summaryText) {
 }
 
 async function deleteDataset(index, language) {
-    const data = {
-        index: index,
-        language: language
-    };
-    await fetch('/dataset/delete', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
-    })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
+    Confirm.open({
+        title: 'Background Change',
+        message: 'Are you sure you wish the background color?',
+        onok: () => {
+            const data = {
+                index: index,
+                language: language
+            };
+            fetch('/dataset/delete', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                alert("Delete data successfully")
+                location.reload();
+            })
         }
-        alert("Delete data successfully")
-        location.reload();
-    })
+      })
+
 }

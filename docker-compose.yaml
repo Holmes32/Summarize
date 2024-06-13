@@ -1,0 +1,9 @@
+version: "3"
+services: 
+  website:
+    image: summarize
+    container_name: website
+    ports:
+      - 3000:3000
+    environment:
+      NODE_ENV: production
