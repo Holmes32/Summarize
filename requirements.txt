@@ -1,0 +1,6 @@
+nltk
+numpy
+networkx
+pyvi
+sklearn
+numpy.linalg

@@ -1,4 +1,3 @@
-// const download = require('download');
 var path = require('path');
 const fs = require('fs');
 class DatasetController {
