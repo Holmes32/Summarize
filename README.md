@@ -8,4 +8,5 @@ source tutorial-env/bin/activate
 
 python -m pip install -r requirements.txt
 
-node server.js
+node install
+node start

@@ -124,8 +124,8 @@ async function save(index, language, rawText, summaryText) {
 
 async function deleteDataset(index, language) {
     Confirm.open({
-        title: 'Background Change',
-        message: 'Are you sure you wish the background color?',
+        title: 'Delete Dataset',
+        message: 'Are you sure you want to delete this data?',
         onok: () => {
             const data = {
                 index: index,
