@@ -12,6 +12,8 @@ from sklearn.feature_extraction.text import CountVectorizer
 from nltk import sent_tokenize
 from sklearn.metrics.pairwise import cosine_similarity
 from numpy.linalg import norm
+from t5 import T5Summarizer
+
 
 def parseText(text):
     contents_parsed = text.lower()
@@ -36,8 +38,10 @@ def main():
     contents_parsed = parseText(content)
 
     sentences = nltk.sent_tokenize(contents_parsed) 
-
-    w2v = KeyedVectors.load_word2vec_format("./Model/word2vec/vi.vec")
+    if (language == "vietnamese"):
+        w2v = KeyedVectors.load_word2vec_format("./Model/word2vec/vi.vec")
+    else:
+        w2v = KeyedVectors.load_word2vec_format("./Model/word2vec/GoogleNews-vectors-negative300.bin.gz", binary=True)
     vocab = w2v.key_to_index #Danh sách các từ trong từ điển
     X = []
     for sentence in sentences:
@@ -54,8 +58,12 @@ def main():
         clustering(X, max_sentences, sentences)
     elif algorithm == "lsa":
         lsa(X, max_sentences, sentences)
-    else:
+    elif algorithm == "textRank":
         textRank(X, max_sentences, sentences)
+    else:
+        vit5 = T5Summarizer()
+        summary = vit5.summarize(contents_parsed)
+        print(summary)
 
 def clustering(X, max_sentences, sentences):
    #Clustering
@@ -109,26 +117,6 @@ def content_based(summary, full_text):
 
     return score
 
-#
-# def semantic_based(summary, full_text):
-#     try:
-#         summary_sentences = sent_tokenize(summary)
-#         full_text_sentences = sent_tokenize(full_text)
-
-#         vectorizer = CountVectorizer(ngram_range=(1, 3)).fit(full_text_sentences)
-#         smr_matrix = vectorizer.transform(summary_sentences).T.toarray()
-#         full_text_matrix = vectorizer.transform(full_text_sentences).T.toarray()
-#         U0, S0, VT0 = np.linalg.svd(full_text_matrix)
-#         U1, S1, VT1 = np.linalg.svd(smr_matrix)
-
-#         vectors0 = [(np.dot(S0, U0[0, :]), np.dot(S0, U0[i, :])) for i in range(len(U0))]
-#         vectors1 = [(np.dot(S1, U1[0, :]), np.dot(S1, U1[i, :])) for i in range(len(U1))]
-#         angles = [np.arccos(np.dot(a, b) / (norm(a, 2) * norm(b, 2))) for a in vectors0 for b in vectors1]
-
-#         return abs(1 - float(angles[1]) / float(pi / 2))
-#     except:
-#         print("Bug with semantic based evaluation")
-#         return 0.0
 
 if __name__ == "__main__":
     main()

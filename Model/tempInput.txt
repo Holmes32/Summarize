@@ -1,42 +1,14 @@
-Trong bối cảnh thế giới thông tin bùng nổ ngày nay, lượng thông tin được sản xuất và lưu trữ đang tăng lên với tốc độ chóng mặt. Việc tiếp cận, phân tích và sử dụng hiệu quả các thông tin này trở thành một thách thức lớn đối với cá nhân và tổ chức. Trong số các phương pháp hỗ trợ quản lý thông tin, tóm tắt văn bản nổi lên như một giải pháp quan trọng, giúp giảm thiểu thời gian đọc và tìm kiếm thông tin, đồng thời cải thiện hiệu suất làm việc.
+Docker là một nền tảng cho phép bạn đóng gói ứng dụng kèm với môi trường phát triển, giúp bạn triển khai sản phẩm lên hạ tầng product một cách đơn giản và nhanh chóng.
 
-Tóm tắt văn bản là quá trình rút gọn một văn bản gốc dài thành một phiên bản ngắn hơn, nhưng vẫn đảm bảo truyền đạt đầy đủ những ý chính và thông tin quan trọng. Phương pháp này không chỉ hữu ích trong việc xử lý các tài liệu văn bản truyền thống mà còn có ý nghĩa quan trọng trong nhiều lĩnh vực khác nhau như nghiên cứu khoa học, kinh doanh, giáo dục và truyền thông.
+Trong các bài viết trước, mình đã giới thiệu tổng quan, cách cài đặt cũng như những câu câu lệnh cơ bản để bạn tiếp cận và sử dụng Docker. Bạn có thể tìm đọc lại nhé.
 
-Đồ án này nhằm mục đích nghiên cứu và phát triển một hệ thống tóm tắt văn bản tự động, sử dụng các kỹ thuật hiện đại trong lĩnh vực xử lý ngôn ngữ tự nhiên (NLP) và học máy (Machine Learning). Hệ thống sẽ được đánh giá dựa trên các tiêu chí về độ chính xác, tính nhất quán và khả năng áp dụng trong thực tế. Qua đó, đồ án không chỉ góp phần vào việc phát triển công nghệ tóm tắt văn bản mà còn mang lại những ứng dụng thiết thực, giúp tối ưu hóa quá trình xử lý thông tin và ra quyết định.
+Tìm hiểu Docker cơ bản
+Những câu lệnh Docker cơ bản
+Việc liệt kê tất cả những thứ cần thiết để ứng dụng của bạn có thể chạy được vào trong Dockerfile, người ta gọi công việc này là Dockerizing. Khi có được Dockerfile, bạn có thể dùng để build một Docker image, từ đó mang đi chia sẻ và chạy bất kỳ server nào cũng được.
 
-Ứng Dụng
-Tóm tắt văn bản có nhiều ứng dụng thực tiễn trong các lĩnh vực khác nhau:
+Docker image được hiểu đơn giản là một file chứa các mã nguồn ứng dụng, libraries, dependencies, tools và các files khác cần thiết cho một ứng dụng để chạy được.
 
-Nghiên cứu khoa học: Hỗ trợ các nhà nghiên cứu tóm tắt các bài báo khoa học, giúp họ nhanh chóng nắm bắt được nội dung chính của nhiều tài liệu.
-Giáo dục: Giúp học sinh và sinh viên rút gọn tài liệu học tập, nắm bắt được các điểm chính một cách hiệu quả.
-Truyền thông: Các nhà báo và biên tập viên có thể sử dụng để tóm tắt các bài viết, báo cáo, và tin tức.
-Kinh doanh: Hỗ trợ trong việc xử lý và tổng hợp thông tin từ các báo cáo, bản tin thị trường và các tài liệu doanh nghiệp.
-Dịch vụ khách hàng: Tóm tắt các yêu cầu và phản hồi từ khách hàng để xử lý hiệu quả hơn.
-Các Dạng Tóm Tắt Văn Bản
-Có hai dạng tóm tắt văn bản chính:
+Trong bài viết này, mình sẽ hướng dẫn các bạn cách deploy dự án bằng docker, từ đóng gói một dự án (cụ thể là dự án được xây dựng bằng NodeJS) vào docker và mang triển khai lên server thật.
 
-Tóm tắt trích xuất (Extractive Summarization): Chọn ra các câu hoặc đoạn văn bản quan trọng từ tài liệu gốc để tạo ra bản tóm tắt. Phương pháp này không thay đổi nội dung gốc mà chỉ rút gọn nó lại.
+Sau khi đọc xong bài viết này, mình hi vọng bạn sẽ có đủ kiến thức để tự đóng gói và triển khai ứng dụng của riêng mình thông qua docker. Ngay cả khi dự án đó được xây dựng bằng công nghệ khác, không phải là Nodejs
 
-Tóm tắt sinh (Abstractive Summarization): Tạo ra các câu mới dựa trên nội dung tài liệu gốc. Phương pháp này yêu cầu hệ thống hiểu và diễn đạt lại nội dung theo cách ngắn gọn và dễ hiểu hơn.
-
-Các Phương Pháp Thực Hiện
-Phương pháp dựa trên luật (Rule-based Methods): Sử dụng các luật định trước để xác định và rút trích các câu quan trọng. Ví dụ như dựa vào vị trí của câu, độ dài, hoặc các từ khóa quan trọng.
-
-Phương pháp thống kê (Statistical Methods): Sử dụng các kỹ thuật thống kê để xác định các câu có khả năng chứa thông tin quan trọng nhất. Các mô hình như TextRank, TF-IDF thường được sử dụng.
-
-Phương pháp học máy (Machine Learning Methods): Sử dụng các mô hình học máy để học từ dữ liệu huấn luyện và tạo ra các bản tóm tắt. Các mô hình như Naive Bayes, SVM có thể được áp dụng.
-
-Phương pháp học sâu (Deep Learning Methods): Sử dụng các mô hình mạng nơ-ron sâu, đặc biệt là các mô hình seq2seq, Transformer, BERT, và GPT để tạo ra các bản tóm tắt văn bản. Các mô hình này có khả năng hiểu ngữ cảnh và tạo ra các bản tóm tắt sinh động và chính xác hơn.
-
-Phương Pháp Đánh Giá
-Việc đánh giá chất lượng của hệ thống tóm tắt văn bản thường dựa trên các tiêu chí sau:
-
-ROUGE (Recall-Oriented Understudy for Gisting Evaluation): Đo lường mức độ trùng lặp giữa bản tóm tắt tự động và bản tóm tắt tham chiếu (do con người tạo ra). Các biến thể như ROUGE-N, ROUGE-L thường được sử dụng.
-
-BLEU (Bilingual Evaluation Understudy): Được sử dụng phổ biến trong đánh giá dịch máy, nhưng cũng có thể áp dụng cho tóm tắt văn bản. Đo lường mức độ trùng lặp của các cụm từ giữa bản tóm tắt tự động và tham chiếu.
-
-METEOR (Metric for Evaluation of Translation with Explicit ORdering): Đo lường dựa trên sự tương đồng giữa các từ, cụm từ và ngữ pháp giữa bản tóm tắt tự động và tham chiếu.
-
-Đánh giá con người: Mời các chuyên gia hoặc người dùng đánh giá trực tiếp bản tóm tắt dựa trên các tiêu chí như tính chính xác, tính nhất quán và tính dễ hiểu.
-
-Đồ án này sẽ áp dụng các phương pháp trên để xây dựng và đánh giá hệ thống tóm tắt văn bản, từ đó đưa ra những kết luận và khuyến nghị cho việc ứng dụng trong thực tế.

@@ -12,16 +12,12 @@ function includeHeader() {
         });
     });
     
-    // Create a new XMLHttpRequest object
     var xhr = new XMLHttpRequest();
 
-    // Define the path to the header HTML file
     var headerPath = '../views/header.html';
 
-    // Open a GET request to fetch the header HTML
     xhr.open('GET', headerPath, true);
 
-    // Set the responseType to 'text'
     xhr.responseType = 'text';
 
     // Define what to do when the request is completed

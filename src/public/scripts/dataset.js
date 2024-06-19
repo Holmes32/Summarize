@@ -11,19 +11,8 @@ document.addEventListener("DOMContentLoaded", () => {
         fetchDataset();
     });
 
-    // Example dataset for demonstration
-    const exampleData = [
-        { rawText: "", summarizedTexts: ["", ""] },
-        { rawText: "", summarizedTexts: ["", ""] },
-        { rawText: "", summarizedTexts: ["", ""] },
-        { rawText: "", summarizedTexts: ["", "Fourth example summary 2."] }
-    ];
-
     // Function to fetch dataset from server (for now using example data)
     async function fetchDataset() {
-        // Simulate fetching data from the server with example data
-        // const data = exampleData;
-        // renderDataset(data);
         try {
             const language = document.getElementById('language').value;
             const dataSend = {
