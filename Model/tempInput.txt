@@ -1,14 +1,23 @@
-Docker là một nền tảng cho phép bạn đóng gói ứng dụng kèm với môi trường phát triển, giúp bạn triển khai sản phẩm lên hạ tầng product một cách đơn giản và nhanh chóng.
+The leader of Lebanese militant group Hezbollah threatened Wednesday to target the European island of Cyprus if war breaks out between Israel and Lebanon.
 
-Trong các bài viết trước, mình đã giới thiệu tổng quan, cách cài đặt cũng như những câu câu lệnh cơ bản để bạn tiếp cận và sử dụng Docker. Bạn có thể tìm đọc lại nhé.
+“Cyprus will be part of this war too” if it opens its airports and bases to Israeli forces, Hassan Nasrallah said in a televised address that came just a day after Israel warned the powerful Iran-backed militant group that the prospect of “all-out war” was “getting very close.”
 
-Tìm hiểu Docker cơ bản
-Những câu lệnh Docker cơ bản
-Việc liệt kê tất cả những thứ cần thiết để ứng dụng của bạn có thể chạy được vào trong Dockerfile, người ta gọi công việc này là Dockerizing. Khi có được Dockerfile, bạn có thể dùng để build một Docker image, từ đó mang đi chia sẻ và chạy bất kỳ server nào cũng được.
+The comments by the Hezbollah leader are the first time he has threatened Cyprus, a member of the European Union that lies in the Mediterranean sea, roughly 125 miles (200 kilometers) from Lebanon, and which has held joint military exercises with Israel since 2014 and as recently as last year.
 
-Docker image được hiểu đơn giản là một file chứa các mã nguồn ứng dụng, libraries, dependencies, tools và các files khác cần thiết cho một ứng dụng để chạy được.
+Nasrallah’s threat came as part of a fiery response to Israel’s warning that saw him boast of his group’s growing capabilities and threaten to “shake the pillars” of Israel if a war “were to be imposed on Lebanon.”
 
-Trong bài viết này, mình sẽ hướng dẫn các bạn cách deploy dự án bằng docker, từ đóng gói một dự án (cụ thể là dự án được xây dựng bằng NodeJS) vào docker và mang triển khai lên server thật.
+Tensions between Hezbollah and Israel have been rising since the October 7 Hamas attacks and the ensuing military campaign by the Israel Defense Forces in Gaza. In recent weeks, the intensity of cross-border attacks between the two has increased, raising concerns over the prospect of a full-blown war.
 
-Sau khi đọc xong bài viết này, mình hi vọng bạn sẽ có đủ kiến thức để tự đóng gói và triển khai ứng dụng của riêng mình thông qua docker. Ngay cả khi dự án đó được xây dựng bằng công nghệ khác, không phải là Nodejs
+Hassan Nasrallah gestures as he addresses his supporters at an Ashura ceremony in Beirut's southern suburbs, Lebanon on October 23, 2015.
+Hassan Nasrallah addresses his supporters at an Ashura ceremony in Beirut's southern suburbs, Lebanon, on October 23, 2015. Khalil Hassan/Reuters/File
+Those prospects took a turn for the worse Tuesday, when Hezbollah flaunted a 9-minute video filmed by a drone showing civilian and military locations in and around one of Israel’s largest cities, Haifa. The video prompted Israeli Foreign Minister Israel Katz to warn of an “all-out war” in which “Hezbollah will be destroyed, and Lebanon severely beaten.”
 
+On Wednesday, Nassrallah celebrated the video as evidence of its growing ability to gather intelligence.
+
+“The enemy knows that no place in the entire (state) is safe from our missiles, and it won’t be arbitrary. Everything will be deliberately targeted,” Nasrallah said in his speech.
+
+“We have long hours of footage of Haifa, of the outskirts of Haifa, and what comes after Haifa, and after after Haifa,” Nasrallah said, in an apparent reference to a Hezbollah slogan from the 2006 war with Israel, when the group’s rockets hit Haifa for the first time.
+
+In response to the threat by Nasrallah, Cyprus’ President Nikos Christodoulides said the island was in “no way involved in the war conflicts.”
+
+“The Republic of Cyprus is not part of the problem. The Republic of Cyprus is part of the solution,” Christodoulides said. “And our role in this, as demonstrated, for example, through the humanitarian corridor, is recognized not only by the Arab world but by the international community as a whole.”

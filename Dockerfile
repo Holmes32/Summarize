@@ -1,4 +1,4 @@
-FROM python:3.9-alpine3.20
+FROM ubuntu:20.04
 WORKDIR /app
 # Copy and download dependencies
 # COPY package.json package-lock.json ./  
@@ -6,26 +6,29 @@ WORKDIR /app
 # Copy the source files into the image
 COPY . .
 EXPOSE 3000
-RUN apk update
+RUN rm /bin/sh && ln -s /bin/bash /bin/sh
+
+RUN apt-get update
 # RUN apk add --update --no-cache curl py-pip
+RUN apt-get install -y python3.9
+RUN apt-get install -y python3-pip
+RUN pip install virtualenv
 RUN source Model/tutorial-env/bin/activate
+
 RUN pip install --upgrade pip
-# RUN pip install --upgrade pip setuptools wheel
-RUN pip install torch
-RUN pip install transformers
-RUN pip install sentencepiecel
-# RUN apk add --no-cache python3-dev libstdc++ && \
-#     apk add --no-cache g++ && \
-#     ln -s /usr/include/locale.h /usr/include/xlocale.h && \
-#     pip3 install numpy
 RUN pip install numpy
-# RUN apk add openblas-dev
-# RUN apk add pkgconf
-# RUN apk add gfortran
+RUN pip install --default-timeout=100 torch
+
+RUN pip install transformers
+RUN pip install sentencepiece
 RUN pip install --default-timeout=100 gensim
 
-RUN apk add py3-scikit-learn
+RUN pip install scikit-learn
 RUN pip install nltk
 RUN pip install networkx
 RUN pip install pyvi
+RUN apt install -y nodejs npm
+
+COPY package.json package-lock.json ./  
+RUN npm ci
 CMD npm start
